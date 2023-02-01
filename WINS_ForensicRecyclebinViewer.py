@@ -16,10 +16,11 @@ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
 class MyWindow:
     def __init__(self):
-        self.dlg = loadUi(BASE_DIR + r'\WINS_Ui_ForensicRecyclebinViewer.ui')
+        self.dlg = loadUi(BASE_DIR + r'\main3.ui')
 
         global PATH_DIR
-        PATH_DIR, b = QInputDialog.getText(self.dlg, '경로 입력', '분석할 휴지통이 있는 경로를 입력하세요. \n\n\n 휴지통까지의 경로를 입력해야합니다. ex. C:\\$Recycle.bin\\ \n\n 이 프로그램은 사용자가 경로를 제대로 입력했다는 가정 하에 동작합니다. \n ※제대로 된 경로를 설정하지 않아 발생하는 오류는 책임지지 않습니다.※ \n 경로를 잘못 설정했을 경우, 프로그램을 다시 실행해야합니다.')
+        PATH_DIR, b = QInputDialog.getText(self.dlg, '경로 입력',
+                                           '분석할 휴지통이 있는 경로를 입력하세요. \n\n\n 휴지통까지의 경로를 입력해야합니다. ex. C:\\$Recycle.bin\\ \n\n 이 프로그램은 사용자가 경로를 제대로 입력했다는 가정 하에 동작합니다. \n ※제대로 된 경로를 설정하지 않아 발생하는 오류는 책임지지 않습니다.※ \n 경로를 잘못 설정했을 경우, 프로그램을 다시 실행해야합니다.')
         self.dlg.secIdList.addItems(os.listdir(PATH_DIR))
         self.dlg.secIdList.setCurrentIndex(-1)
         self.dlg.action_file_list.triggered.connect(self.view_main)
@@ -83,6 +84,9 @@ class MyWindow:
         except FileNotFoundError:
             self.dlg.filesListView.addItem('엑세스 위반')
             self.dlg.searchBox.setEnabled(False)
+        except OSError:
+            self.dlg.filesListView.addItem('엑세스 위반')
+            self.dlg.searchBox.setEnabled(False)
 
     def list_filter(self):
         global R_FILES, I_FILES, ETC_FILES
@@ -116,6 +120,9 @@ class MyWindow:
             self.dlg.filesListView.addItem('엑세스 위반')
             self.dlg.searchBox.setEnabled(False)
         except FileNotFoundError:
+            self.dlg.filesListView.addItem('엑세스 위반')
+            self.dlg.searchBox.setEnabled(False)
+        except OSError:
             self.dlg.filesListView.addItem('엑세스 위반')
             self.dlg.searchBox.setEnabled(False)
 
@@ -237,6 +244,8 @@ class MyWindow:
         except NotADirectoryError:
             self.dlg.capacity.setText(f'{"-": >15}')
         except FileNotFoundError:
+            self.dlg.capacity.setText(f'{"-": >15}')
+        except OSError:
             self.dlg.capacity.setText(f'{"-": >15}')
 
     def searching(self):
