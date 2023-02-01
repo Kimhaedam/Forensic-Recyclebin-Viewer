@@ -20,7 +20,7 @@ WINS Project – 윈도우 아티팩트 뷰어 제작 팀에서 제작한 $Recyc
     
 ### 설치 방법
 
-https://www.dropbox.com/s/owzix2v7a30nu4n/RecycleBinViewerSetup.zip?dl=0
+https://www.dropbox.com/scl/fo/j1ux9rdxvbea2kl3gnjfg/h?dl=0&rlkey=wwh5hzeok23a12r91mmnr86rq
     
   > 위 Dropbox 링크에서 zip 파일 다운로드 >> 압축 풀기 >> 설치 진행
     
