@@ -16,7 +16,7 @@ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
 class MyWindow:
     def __init__(self):
-        self.dlg = loadUi(BASE_DIR + r'\main3.ui')
+        self.dlg = loadUi(BASE_DIR + r'\WINS_Ui_ForensicRecyclebinViewer.ui')
 
         global PATH_DIR
         PATH_DIR, b = QInputDialog.getText(self.dlg, '경로 입력',
